@@ -5,13 +5,19 @@ import userRouter from './router/userRouter.js';
 import productRouter from './router/productRouter.js';
 import verifyJWT from './middleware/auth.js';
 import orderRouter from './router/orderRouter.js';
+import dotenv from "dotenv";
+dotenv.config()
+import cors from 'cors';
+
+
+const app =express();
+app.use(cors({
+    origin:"*"
+}))
 
 
 
-
-
-let app =express();
-mongoose.connect("mongodb+srv://admin:Admin123@cluster0.tosi5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(
+mongoose.connect(process.env.MONGO_URL).then(
 ()=>{
 console.log ("connected to the database");
 }

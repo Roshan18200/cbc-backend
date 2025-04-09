@@ -76,7 +76,7 @@ export async function loginUser(req, res) {
         const userData = {
             id: user._id,
             email: user.email,
-            firstName: user.firstName,
+            firstName: user.fristName,
             lastName: user.lastName,
             role: user.role,
             phone: user.phone,
@@ -86,17 +86,25 @@ export async function loginUser(req, res) {
 
         const token = jwt.sign(userData, "password", { expiresIn: "1h" });
 
-        res.status(200).json({
-            message: "Login successful",
-            token,
-        });
+
+        res.json({
+            message: "User logged in",
+            token: token,
+            user : {
+              firstName : user.firstName,
+              lastName : user.lastName,
+              role : user.role,
+              profilePicture : user.profilePicture,
+              email : user.email
+            }
+          })
     } catch (err) {
         console.error("Login error:", err);
         res.status(500).json({ message: "Internal server error" });
     }
 }
-
-/*import User from "../models/user.js";
+/*
+import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 

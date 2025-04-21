@@ -10,6 +10,7 @@ export function createProduct(req,res){
 
     if(req.user.role != "admin"){
         res.status(403).json({
+            
             message : "You are not authrized to create a product"
         })
         return;
@@ -59,7 +60,7 @@ export function deleteProduct(req,res){
 
     if(req.user.role != "admin"){
         res.status(403).json({
-            message : "You are not authrized to create a product"
+            message : "You are not authrized to delete a product"
         })
         return;
     }

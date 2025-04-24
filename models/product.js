@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema({
         required : true
     },
 
-    altName :{
+    altNames :{
         type : [String],
         default : []
     },
@@ -36,7 +36,7 @@ const productSchema = new mongoose.Schema({
     images :{
         type : [String],
         required : true,
-        default : ["https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-iugAQV5fmEY2kGWi7XPFpdrwRU99ackxP6KZNeHmP9uademLaY4YyIYcm8XnvaLT1OFjlGitmJXkoKp1uDAgL0c151kIoFEInsKcCcpDe8boiHWyiYnZFgF8AaXabrA2uIqwAM2Ka7Q/s1600/HEADDER.jpg"]
+        default : []
     },
 
     stock :{

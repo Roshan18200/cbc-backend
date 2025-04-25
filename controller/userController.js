@@ -5,10 +5,10 @@ import jwt from "jsonwebtoken";
 // SAVE USER
 export async function saveUser(req, res) {
     try {
-        const { email, password, role, firstName, lastName } = req.body;
+        const { email, password, role, fristName, lastName } = req.body;
 
         // Check required fields
-        if (!email || !password || !firstName || !lastName || !role) {
+        if (!email || !password || !fristName|| !lastName ) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
@@ -38,7 +38,7 @@ export async function saveUser(req, res) {
         // Create and save user
         const user = new User({
             email,
-            firstName,
+            fristName,
             lastName,
             password: hashedPassword,
             role,
@@ -76,7 +76,7 @@ export async function loginUser(req, res) {
         const userData = {
             id: user._id,
             email: user.email,
-            firstName: user.fristName,
+            fristName: user.fristName,
             lastName: user.lastName,
             role: user.role,
             phone: user.phone,
@@ -91,7 +91,7 @@ export async function loginUser(req, res) {
             message: "User logged in successfully",
             token: token,
             user : {
-              firstName : user.firstName,
+                fristName: user.fristName,
               lastName : user.lastName,
               role : user.role,
               profilePicture : user.profilePicture,

@@ -45,3 +45,4 @@ isEmailVerified:{
 const User =mongoose.model("users",userSchema)
 
 export default User;
+//test

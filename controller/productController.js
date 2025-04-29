@@ -50,6 +50,21 @@ export function getProduct(req,res){
     )
 }
 
+export async function getProductById(req,res){
+const productId = req.params.id
+console.log(productId)
+const product = await Product.findOneAndDelete({productId : productId})
+if(product ==null){
+    res.status(404).json({
+        message : "Product not found"
+    })
+    return
+} 
+res.json({
+    product : product
+})
+}
+
 export function deleteProduct(req,res){
     if (req.user == null){
         res.status(403).json({
@@ -112,4 +127,5 @@ Product.findOneAndUpdate({
 )
 
 }
+
 // changing the code 4
